@@ -1,0 +1,14 @@
+.bsp/
+target/
+out/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+submissions/
+.metals/
+.bloop/
+.vscode/
+build/
