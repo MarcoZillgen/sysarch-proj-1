@@ -20,10 +20,10 @@
     },
 
 
-    "mounts": [
-      "type=bind,source=${localEnv:HOME}/.ssh,target=/home/ubuntu/.ssh,readonly",
-      "type=bind,source=${localEnv:HOME}/.gitconfig,target=/home/ubuntu/.gitconfig,readonly"
-    ],
+    // "mounts": [
+    //   "type=bind,source=${localEnv:HOME}/.ssh,target=/home/ubuntu/.ssh,readonly",
+    //   "type=bind,source=${localEnv:HOME}/.gitconfig,target=/home/ubuntu/.gitconfig,readonly"
+    // ],
 
     "remoteUser": "ubuntu"
   }
