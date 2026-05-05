@@ -9,3 +9,12 @@ class XORGate extends Module {
 
   out := a ^ b
 }
+
+object Xor {
+  def apply(a: Bool, b: Bool): Bool = {
+    val xorGate = Module(new XORGate)
+    xorGate.a := a
+    xorGate.b := b
+    xorGate.out
+  }
+}

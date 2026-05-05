@@ -8,3 +8,11 @@ class NOTGate extends Module {
 
   out := !a
 }
+
+object Not {
+  def apply(a: Bool): Bool = {
+    val notGate = Module(new NOTGate)
+    notGate.a := a
+    notGate.out
+  }
+}

@@ -9,3 +9,12 @@ class NANDGate extends Module {
 
   out := ~(a & b)
 }
+
+object Nand {
+  def apply(a: Bool, b: Bool): Bool = {
+    val nandGate = Module(new NANDGate)
+    nandGate.a := a
+    nandGate.b := b
+    nandGate.out
+  }
+}

@@ -9,3 +9,12 @@ class ORGate extends Module {
 
   out := a | b
 }
+
+object Or {
+  def apply(a: Bool, b: Bool): Bool = {
+    val orGate = Module(new ORGate)
+    orGate.a := a
+    orGate.b := b
+    orGate.out
+  }
+}
