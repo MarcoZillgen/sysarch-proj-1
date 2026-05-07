@@ -19,5 +19,6 @@
 
 # Use of AI tools
 
-- Marco Zillgen:
-- Mika Reich:
+- Sanskar:
+- Marco:
+- Mika:
