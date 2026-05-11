@@ -10,5 +10,12 @@ class Mux(width: Int) extends Module {
   val sel = IO(Input(Bool()))
   val out = IO(Output(Vec(width, Bool())))
 
-  ???
+  val notSel = Not(sel);
+
+  for (i <- 0 until width) {
+    out(i) := Or(
+      And(notSel, a(i)),
+      And(sel, b(i))
+    )
+  }
 }
