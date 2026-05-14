@@ -18,13 +18,12 @@ class SignedMagnitudeToOnesComplement(width: Int) extends Module {
   val signBit = signedMagnitude(len)
 
   val mux = Module(new Mux(len))
-  for (i <- 0 until len) {
-    mux.a(i) := signedMagnitude(i)
-    mux.b(i) := Not(signedMagnitude(i))
-  }
   mux.sel := signBit
-
-  for (i <- 0 until width) {
+  for (i <- 0 until len) {
+    mux.a(i)          := signedMagnitude(i)
+    mux.b(i)          := Not(signedMagnitude(i))
     onesComplement(i) := mux.out(i)
   }
+
+  onesComplement(len) := signBit
 }
