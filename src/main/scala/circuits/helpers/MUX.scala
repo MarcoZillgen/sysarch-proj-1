@@ -13,7 +13,7 @@ class Mux(width: Int) extends Module {
   // sel == 0 => a
   // sel == 1 => b
 
-  val notSel = Not(sel);
+  val notSel = Not(sel)
 
   for (i <- 0 until width) {
     out(i) := Or(
