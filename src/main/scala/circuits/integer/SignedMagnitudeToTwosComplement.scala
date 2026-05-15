@@ -13,10 +13,10 @@ class SignedMagnitudeToTwosComplement(width: Int) extends Module {
     if neg: flip all the bits (except sgn) and add 1
    */
   val neg = Module(new nBitNOT(width - 1))
-  neg.a := signedMagnitude.slice(0, width - 2)
+  neg.a := signedMagnitude.slice(0, width - 1)
 
   val inverted = Wire(Vec(width, Bool()))
-  inverted.slice(0, width - 2) := neg.out
+  inverted.slice(0, width - 1) := neg.out
   inverted(width - 1)          := signedMagnitude(width - 1)
 
   val twosc = Module(new nBitAdderSubtractor(width))
