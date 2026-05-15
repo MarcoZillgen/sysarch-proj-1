@@ -28,19 +28,29 @@ class LeadingOneDetector extends Module {
 
   isLeading := isLead
 
-  // found = any bit was 1 at all
   found := seenOne(0)
 
   // encode position into 5 bits
   for (b <- 0 until 5) {
     val bits = Wire(Vec(31, Bool()))
+
     for (i <- 0 until 31) {
-      if (((i >> b) & 1) == 1) {
-        bits(i) := isLead(i)
+      // hardcode 2^b for each value of b
+      val bit = b match {
+        case 0 => i        % 2 == 1
+        case 1 => (i / 2)  % 2 == 1
+        case 2 => (i / 4)  % 2 == 1
+        case 3 => (i / 8)  % 2 == 1
+        case 4 => (i / 16) % 2 == 1
+      }
+
+      if (bit) {
+        bits(i) := isLeading(i)
       } else {
         bits(i) := false.B
       }
     }
+
     val orAll = Module(new nBitOR(31))
     orAll.a     := bits
     position(b) := orAll.out

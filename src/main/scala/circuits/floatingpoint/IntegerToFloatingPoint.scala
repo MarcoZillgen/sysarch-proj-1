@@ -33,16 +33,17 @@ class IntegerToFloatingPoint extends Module {
   exp.enable_sub := false.B
 
 // Mantissa
-  val mantissa = Wire(Vec(23, Bool()))
-
+  val mantissa  = Wire(Vec(23, Bool()))
+  val magnitude = Wire(Vec(31, Bool()))
+  magnitude := intInput.slice(0, 31)
   val candidates = Wire(Vec(31, Vec(23, Bool())))
   for (p <- 0 until 31) {
     for (j <- 0 until 23) {
-      val srcBit = p - 1 - j // bit of magnitude just below the leading 1
+      val srcBit = p - (23 - j) // bit of magnitude just below the leading 1
       candidates(p)(j) := false.B
       if (srcBit >= 0) {
         if (srcBit < 31) {
-          candidates(p)(j) := intInput(srcBit)
+          candidates(p)(j) := magnitude(srcBit)
         }
       }
     }

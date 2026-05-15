@@ -19,6 +19,6 @@
 
 # Use of AI tools
 
-- Sanskar:
+- Sanskar: generating code using Claude(Sonnet 4.6) for LeadingOneDetector, parts of 3.2 (Mantissa) and 3.3 (reconstructing mantissa)
 - Marco:
 - Mika:
