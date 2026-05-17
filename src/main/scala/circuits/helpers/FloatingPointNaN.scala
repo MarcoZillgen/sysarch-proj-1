@@ -5,7 +5,7 @@ import sysarch.gates._
 import sysarch.circuits.helpers._
 
 class FloatingPointNaN extends Module {
-  val in   = IO(Input(Vec(32, Bool())))
+  val in  = IO(Input(Vec(32, Bool())))
   val out = IO(Output(Bool()))
 
   /*
@@ -15,13 +15,13 @@ class FloatingPointNaN extends Module {
   val eAll = Wire(Bool())
   eAll := true.B
   for (i <- 23 until 31) {
-    eAll := And(eAll, a(i))
+    eAll := And(eAll, in(i))
   }
 
   val mSome = Wire(Bool())
   mSome := false.B
   for (i <- 0 until 23) {
-    mSome := Or(mSome, a(i))
-  } 
+    mSome := Or(mSome, in(i))
+  }
   out := And(eAll, mSome)
 }
